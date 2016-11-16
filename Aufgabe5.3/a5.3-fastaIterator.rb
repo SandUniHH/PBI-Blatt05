@@ -29,9 +29,8 @@ end
 
 class FastaIterator
 
-  def initialize(filename)
-    @file = filename
-    @lines = @file.readlines
+  def initialize(file)
+    @lines = file.readlines
   end
 
   def each()
@@ -56,9 +55,9 @@ end
 
 ############
 
-filename = readfile()
+file = readfile()
 
-iterator = FastaIterator.new(filename)
+iterator = FastaIterator.new(file)
 iterator.each do |header, sequence|
   seq_formatted = sequence.join.gsub(/(\w{70})/, "\\1\n")
   puts header
